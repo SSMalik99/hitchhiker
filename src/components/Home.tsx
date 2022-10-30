@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
 
@@ -14,7 +13,7 @@ export default function Home() {
             <View style={styles.wrapper}>
             <View style={styles.logo_container}>
             <Image style={styles.logo}  
-                        source={require('../assets/logo1.png')}
+                        source={require('../../assets/logo1.png')}
                     />
             </View>
             <Pressable 
