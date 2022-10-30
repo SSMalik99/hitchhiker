@@ -1,8 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
 
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
 
 
 export default function Home() {
@@ -13,8 +12,8 @@ export default function Home() {
         return (
             <View style={styles.wrapper}>
             <View style={styles.logo_container}>
-                    <Image style={styles.logo}  
-                        source={require('../assets/hitchiker.png')}
+            <Image style={styles.logo}  
+                        source={require('../../assets/logo1.png')}
                     />
             </View>
             <Pressable 
