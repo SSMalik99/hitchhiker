@@ -1,44 +1,55 @@
 import { Button, StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
+import { useNavigation } from '@react-navigation/native';
 
 import { AntDesign } from '@expo/vector-icons';
 
 
 export default function Home() {
-   useFonts({
+
+    const navigation = useNavigation();
+   const [loaded, error] = useFonts({
         Abel_400Regular,
       });
 
         return (
-            <View style={styles.wrapper}>
-            <View style={styles.logo_container}>
-            <Image style={styles.logo}  
-                        source={require('../../assets/logo1.png')}
-                    />
-            </View>
-            <Pressable 
-                onPress={()=>{
-                    console.log("Pressed")
-                }}
-                style={styles.home_btn}
-            >
-                <Text style={styles.home_btn_text}>
-                    Get Started
-                    
-                </Text>
-                <AntDesign name="arrowright" style={
-                    {
-                        fontFamily:'Abel_400Regular',
-                        paddingTop:2,
-                        marginLeft:3
-                    }
-                } size={16} color="white" />
-            </Pressable>
-            
+            <View style={styles.container}>
+                <View style={styles.wrapper}>
+                <View style={styles.logo_container}>
+                <Image style={styles.logo}  
+                            source={require('../../assets/logo1.png')}
+                        />
+                </View>
+                <Pressable 
+                    onPress={()=>{
+                        navigation.navigate('Search')
+                    }}
+                    style={styles.home_btn}
+                >
+                    <Text style={styles.home_btn_text}>
+                        Get Started
+                        
+                    </Text>
+                    <AntDesign name="arrowright" style={
+                        {
+                            fontFamily:'Abel_400Regular',
+                            paddingTop:2,
+                            marginLeft:3
+                        }
+                    } size={16} color="white" />
+                </Pressable>
+                
+                </View>
             </View>
         );
 }
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
     wrapper : {
         flex:1,
         justifyContent:'center',

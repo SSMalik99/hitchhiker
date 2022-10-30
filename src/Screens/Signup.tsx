@@ -9,10 +9,10 @@ const styles = StyleSheet.create({
         
     },
 })
-export default function Login() {
+export default function Signup() {
     return (
         <View style={styles.wrapper}>
-            <Text>I am Login</Text>
+            <Text>I am Signup</Text>
         
         </View>
     );
