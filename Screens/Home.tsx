@@ -14,9 +14,7 @@ export default function Home() {
             <View style={styles.wrapper}>
             <View style={styles.logo_container}>
                     <Image style={styles.logo}  
-                        source={{
-                            uri: 'https://reactnative.dev/img/tiny_logo.png',
-                        }}
+                        source={require('../assets/hitchiker.png')}
                     />
             </View>
             <Pressable 
