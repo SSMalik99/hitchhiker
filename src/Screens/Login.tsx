@@ -41,6 +41,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  icon: {
+    height: 40,
+    width: 40,
+  },
+
   TextInput: {
     width: "100%",
     height: 50,
@@ -96,15 +101,23 @@ export default function Login() {
       </View>
       <StatusBar style="auto" />
       <View style={styles.inputView}>
+        <Image
+          style={styles.icon}
+          source={require("../../assets/male-user-icon.svg")}
+        ></Image>
         <TextInput
           style={styles.TextInput}
-          placeholder="Email."
+          placeholder="Username."
           placeholderTextColor="#003f5c"
           onChangeText={(email) => setEmail(email)}
         />
       </View>
 
       <View style={styles.inputView}>
+        <Image
+          style={styles.icon}
+          source={require("../../assets/lock-icon.svg")}
+        ></Image>
         <TextInput
           style={styles.TextInput}
           placeholder="Password."
@@ -122,7 +135,7 @@ export default function Login() {
         <Text
           style={[styles.link_btn, styles.signup_button]}
           onPress={() => {
-            navigation.navigate("Signup", null);
+            navigation.navigate("Signup" as never, null as never);
           }}
         >
           Signup

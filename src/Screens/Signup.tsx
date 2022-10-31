@@ -39,6 +39,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  icon: {
+    height: 40,
+    width: 40,
+  },
+
   TextInput: {
     width: "100%",
     height: 50,
@@ -86,6 +91,7 @@ const styles = StyleSheet.create({
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <View style={styles.container}>
@@ -94,6 +100,22 @@ export default function Signup() {
       </View>
       <StatusBar style="auto" />
       <View style={styles.inputView}>
+        <Image
+          style={styles.icon}
+          source={require("../../assets/male-user-icon.svg")}
+        ></Image>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Username."
+          placeholderTextColor="#003f5c"
+        />
+      </View>
+
+      <View style={styles.inputView}>
+        <Image
+          style={styles.icon}
+          source={require("../../assets/envelope.svg")}
+        ></Image>
         <TextInput
           style={styles.TextInput}
           placeholder="Email."
@@ -103,12 +125,44 @@ export default function Signup() {
       </View>
 
       <View style={styles.inputView}>
+        <Image
+          style={styles.icon}
+          source={require("../../assets/phone-icon.svg")}
+        ></Image>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Phone."
+          placeholderTextColor="#003f5c"
+        />
+      </View>
+
+      <View style={styles.inputView}>
+        <Image
+          style={styles.icon}
+          source={require("../../assets/lock-icon.svg")}
+        ></Image>
         <TextInput
           style={styles.TextInput}
           placeholder="Password."
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
+        />
+      </View>
+
+      <View style={styles.inputView}>
+        <Image
+          style={styles.icon}
+          source={require("../../assets/lock-icon.svg")}
+        ></Image>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Confirm Password."
+          placeholderTextColor="#003f5c"
+          secureTextEntry={true}
+          onChangeText={(confirmPassword) =>
+            setConfirmPassword(confirmPassword)
+          }
         />
       </View>
 
@@ -120,7 +174,7 @@ export default function Signup() {
         <TouchableOpacity>
           <Text
             onPress={() => {
-              navigation.navigate("Login");
+              navigation.navigate("Login" as never);
             }}
             style={[styles.link_btn, styles.signup_button]}
           >
