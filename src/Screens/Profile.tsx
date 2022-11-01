@@ -5,9 +5,7 @@ import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
 
 
 export default function Profile(){
-   useFonts({
-        Abel_400Regular,
-      });
+  
 
         return (
             <View style={styles.wrapper}>

@@ -1,16 +1,15 @@
 import { Button, StyleSheet, Text, View, Image, Pressable } from 'react-native';
-import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
+
 import { useNavigation } from '@react-navigation/native';
 
 import { AntDesign } from '@expo/vector-icons';
+import AppFooter from '../components/Footer';
 
 
 export default function Home() {
 
     const navigation = useNavigation();
-   const [loaded, error] = useFonts({
-        Abel_400Regular,
-      });
+   
 
         return (
             <View style={styles.container}>
@@ -40,6 +39,8 @@ export default function Home() {
                 </Pressable>
                 
                 </View>
+                
+                    <AppFooter/>
             </View>
         );
 }
