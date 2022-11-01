@@ -10,8 +10,7 @@ import {
 } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
-
-const navigation = useNavigation();
+import Icon from "@expo/vector-icons/FontAwesome";
 
 const styles = StyleSheet.create({
   container: {
@@ -39,11 +38,21 @@ const styles = StyleSheet.create({
     height: 45,
     marginBottom: 20,
     alignItems: "center",
+    flexDirection: "row",
+  },
+
+  iconContainer: {
+    height: 32,
+    width: 32,
+    marginTop: 12,
   },
 
   icon: {
-    height: 40,
-    width: 40,
+    fontSize: 32,
+  },
+
+  userIcon: {
+    fontSize: 28
   },
 
   TextInput: {
@@ -93,6 +102,8 @@ const styles = StyleSheet.create({
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [hidePassword, setPasswordHideFlag] = useState(true);
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -101,10 +112,9 @@ export default function Login() {
       </View>
       <StatusBar style="auto" />
       <View style={styles.inputView}>
-        <Image
-          style={styles.icon}
-          source={require("../../assets/male-user-icon.svg")}
-        ></Image>
+        <View style={styles.iconContainer}>
+          <Icon name="user-circle-o" style={[styles.icon, styles.userIcon]}></Icon>
+        </View>
         <TextInput
           style={styles.TextInput}
           placeholder="Username."
@@ -114,37 +124,41 @@ export default function Login() {
       </View>
 
       <View style={styles.inputView}>
-        <Image
-          style={styles.icon}
-          source={require("../../assets/lock-icon.svg")}
-        ></Image>
+        <View style={styles.iconContainer}>
+          <Icon name="lock" style={styles.icon}></Icon>
+        </View>
         <TextInput
           style={styles.TextInput}
           placeholder="Password."
           placeholderTextColor="#003f5c"
-          secureTextEntry={true}
+          secureTextEntry={hidePassword}
           onChangeText={(password) => setPassword(password)}
         />
+        <Icon name={hidePassword ? "eye" : "eye-slash"} onPress={() => setPasswordHideFlag(!hidePassword)}></Icon>
       </View>
 
       <TouchableOpacity style={styles.loginBtn}>
         <Text>LOGIN</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.btn_container}>
-        <Text
-          style={[styles.link_btn, styles.signup_button]}
-          onPress={() => {
-            navigation.navigate("Signup" as never, null as never);
-          }}
-        >
-          Signup
-        </Text>
+      <View style={styles.btn_container}>
+        <TouchableOpacity>
+          <Text
+            style={[styles.link_btn, styles.signup_button]}
+            onPress={() => {
+              navigation.navigate("Signup" as never, null as never);
+            }}
+          >
+            Signup
+          </Text>
+        </TouchableOpacity>
         <Text>|</Text>
-        <Text style={[styles.link_btn, styles.forgot_button]}>
-          Forgot Password?
-        </Text>
-      </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={[styles.link_btn, styles.forgot_button]}>
+            Forgot Password?
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

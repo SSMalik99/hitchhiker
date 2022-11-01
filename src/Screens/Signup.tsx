@@ -9,8 +9,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import Icon from "@expo/vector-icons/FontAwesome";
 
-const navigation = useNavigation();
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -37,13 +37,22 @@ const styles = StyleSheet.create({
     height: 45,
     marginBottom: 20,
     alignItems: "center",
+    flexDirection: "row",
+  },
+
+  iconContainer: {
+    height: 32,
+    width: 32,
+    marginTop: 12,
   },
 
   icon: {
-    height: 40,
-    width: 40,
+    fontSize: 32,
   },
 
+  userIcon: {
+    fontSize: 28,
+  },
   TextInput: {
     width: "100%",
     height: 50,
@@ -77,6 +86,10 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
 
+  text: {
+    color: "white",
+  },
+
   loginBtn: {
     width: "60%",
     height: 50,
@@ -92,6 +105,10 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [hidePassword, setPasswordHideFlag] = useState(true);
+  const [hideConfirmPassword, setConfirmPasswordHideFlag] = useState(true);
+
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -100,10 +117,12 @@ export default function Signup() {
       </View>
       <StatusBar style="auto" />
       <View style={styles.inputView}>
-        <Image
-          style={styles.icon}
-          source={require("../../assets/male-user-icon.svg")}
-        ></Image>
+        <View style={styles.iconContainer}>
+          <Icon
+            name="user-circle-o"
+            style={[styles.icon, styles.userIcon]}
+          ></Icon>
+        </View>
         <TextInput
           style={styles.TextInput}
           placeholder="Username."
@@ -112,10 +131,9 @@ export default function Signup() {
       </View>
 
       <View style={styles.inputView}>
-        <Image
-          style={styles.icon}
-          source={require("../../assets/envelope.svg")}
-        ></Image>
+        <View style={styles.iconContainer}>
+          <Icon name="envelope" style={[styles.icon, styles.userIcon]}></Icon>
+        </View>
         <TextInput
           style={styles.TextInput}
           placeholder="Email."
@@ -125,10 +143,9 @@ export default function Signup() {
       </View>
 
       <View style={styles.inputView}>
-        <Image
-          style={styles.icon}
-          source={require("../../assets/phone-icon.svg")}
-        ></Image>
+        <View style={styles.iconContainer}>
+          <Icon name="phone" style={[styles.icon, styles.userIcon]}></Icon>
+        </View>
         <TextInput
           style={styles.TextInput}
           placeholder="Phone."
@@ -137,33 +154,39 @@ export default function Signup() {
       </View>
 
       <View style={styles.inputView}>
-        <Image
-          style={styles.icon}
-          source={require("../../assets/lock-icon.svg")}
-        ></Image>
+        <View style={styles.iconContainer}>
+          <Icon name="lock" style={[styles.icon]}></Icon>
+        </View>
         <TextInput
           style={styles.TextInput}
           placeholder="Password."
           placeholderTextColor="#003f5c"
-          secureTextEntry={true}
+          secureTextEntry={hidePassword}
           onChangeText={(password) => setPassword(password)}
         />
+        <Icon
+          name={hidePassword ? "eye" : "eye-slash"}
+          onPress={() => setPasswordHideFlag(!hidePassword)}
+        ></Icon>
       </View>
 
       <View style={styles.inputView}>
-        <Image
-          style={styles.icon}
-          source={require("../../assets/lock-icon.svg")}
-        ></Image>
+        <View style={styles.iconContainer}>
+          <Icon name="lock" style={[styles.icon]}></Icon>
+        </View>
         <TextInput
           style={styles.TextInput}
           placeholder="Confirm Password."
           placeholderTextColor="#003f5c"
-          secureTextEntry={true}
+          secureTextEntry={hideConfirmPassword}
           onChangeText={(confirmPassword) =>
             setConfirmPassword(confirmPassword)
           }
         />
+        <Icon
+          name={hideConfirmPassword ? "eye" : "eye-slash"}
+          onPress={() => setConfirmPasswordHideFlag(!hideConfirmPassword)}
+        ></Icon>
       </View>
 
       <TouchableOpacity style={styles.loginBtn}>
@@ -171,17 +194,17 @@ export default function Signup() {
       </TouchableOpacity>
 
       <View style={styles.btn_container}>
+        <Text style={styles.text}>Already have a account ?</Text>
         <TouchableOpacity>
           <Text
+            style={[styles.link_btn, styles.signup_button]}
             onPress={() => {
               navigation.navigate("Login" as never);
             }}
-            style={[styles.link_btn, styles.signup_button]}
           >
-            Already have a account ?
+            Login
           </Text>
         </TouchableOpacity>
-        <Text>|</Text>
       </View>
     </View>
   );
