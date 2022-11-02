@@ -7,11 +7,18 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "@expo/vector-icons/FontAwesome";
+import AppHeader from "../components/AppHeader";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const styles = StyleSheet.create({
+  main_container:{
+    backgroundColor: "#128892",
+    height: Dimensions.get('window').height
+  },
   container: {
     flex: 1,
     backgroundColor: "#128892",
@@ -111,6 +118,8 @@ export default function Signup() {
   const navigation = useNavigation();
 
   return (
+    <SafeAreaView style={styles.main_container}>
+      <AppHeader includeLogin={false} />
     <View style={styles.container}>
       <View style={styles.logo_container}>
         <Image style={styles.logo} source={require("../../assets/logo1.png")} />
@@ -207,5 +216,6 @@ export default function Signup() {
         </TouchableOpacity>
       </View>
     </View>
+    </SafeAreaView>
   );
 }

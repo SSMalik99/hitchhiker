@@ -2,11 +2,14 @@ import { Entypo } from '@expo/vector-icons';
 import { Pressable, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
+import React, { ReactPropTypes } from 'react';
 
 
-const AppHeader = (includeLogin:boolean) => {
+const AppHeader = ({includeLogin}) => {
+
     const navigation = useNavigation();
-    return !includeLogin ?
+
+    return includeLogin !== true ?
         <View style={styles.head}>
             <Pressable 
                     onPress={()=>{
