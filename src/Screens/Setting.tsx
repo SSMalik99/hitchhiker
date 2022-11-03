@@ -50,7 +50,7 @@ const Setting = () => {
               <View style={styles.ride_external_row}>
                     <Icon name="info" style={[styles.icon, styles.userIcon, styles.iconContainer]}></Icon>
                     <View>
-                      <Text style={styles.ride_text}>About us</Text>
+                    <Text style={styles.ride_text}>About us</Text>
                       <Text style={styles.ride_text1}>company and ride app details</Text>
                     </View>
               </View>
