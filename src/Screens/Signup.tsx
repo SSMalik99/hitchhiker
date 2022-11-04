@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     color: "white",
     borderBottomWidth: 1,
     borderBottomColor: "black",
+    fontFamily:"Abel_400Regular"
   },
 
   btn_container: {
@@ -84,7 +85,19 @@ const styles = StyleSheet.create({
   },
 
   signup_button: {
-    marginRight: 8,
+
+    width: "60%",
+    height: 50,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 35,
+    backgroundColor: "white",
+    fontFamily:"Abel_400Regular"
+  },
+
+  signup_button_text: {
+    fontFamily:"Abel_400Regular"
   },
 
   forgot_button: {
@@ -95,16 +108,12 @@ const styles = StyleSheet.create({
 
   text: {
     color: "white",
+    fontFamily:"Abel_400Regular"
   },
 
-  loginBtn: {
-    width: "60%",
-    height: 50,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 35,
-    backgroundColor: "white",
+  login_button: {
+    marginRight: 8,
+    fontFamily:"Abel_400Regular"
   },
 });
 
@@ -198,15 +207,15 @@ export default function Signup() {
         ></Icon>
       </View>
 
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text>Signup</Text>
+      <TouchableOpacity style={styles.signup_button}>
+        <Text style={styles.signup_button_text}>Signup</Text>
       </TouchableOpacity>
 
       <View style={styles.btn_container}>
         <Text style={styles.text}>Already have a account ?</Text>
         <TouchableOpacity>
           <Text
-            style={[styles.link_btn, styles.signup_button]}
+            style={[styles.link_btn, styles.login_button]}
             onPress={() => {
               navigation.navigate("Login" as never);
             }}

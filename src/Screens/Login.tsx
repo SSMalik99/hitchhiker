@@ -15,16 +15,87 @@ import Icon from "@expo/vector-icons/FontAwesome";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppHeader from "../components/AppHeader";
 
+
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [hidePassword, setPasswordHideFlag] = useState(true);
+  const navigation = useNavigation();
+
+  return (
+    <SafeAreaView style={styles.main_container}>
+      <AppHeader includeLogin={false} />
+    
+    <View style={styles.container}>
+      <View style={styles.logo_container}>
+        <Image style={styles.logo} source={require("../../assets/logo1.png")} />
+      </View>
+      <StatusBar style="auto" />
+      <View style={styles.inputView}>
+        <View style={styles.iconContainer}>
+          <Icon name="user-circle-o" style={[styles.icon, styles.userIcon]}></Icon>
+        </View>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Username."
+          placeholderTextColor="#003f5c"
+          onChangeText={(email) => setEmail(email)}
+        />
+      </View>
+
+      <View style={styles.inputView}>
+        <View style={styles.iconContainer}>
+          <Icon name="lock" style={styles.icon}></Icon>
+        </View>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Password."
+          placeholderTextColor="#003f5c"
+          secureTextEntry={hidePassword}
+          onChangeText={(password) => setPassword(password)}
+        />
+        <Icon name={hidePassword ? "eye" : "eye-slash"} onPress={() => setPasswordHideFlag(!hidePassword)}></Icon>
+      </View>
+
+      <TouchableOpacity style={styles.loginBtn}>
+        <Text style={styles.loginBtnText}>LOGIN</Text>
+      </TouchableOpacity>
+
+      <View style={styles.btn_container}>
+        <TouchableOpacity>
+          <Text
+            style={[styles.link_btn, styles.signup_button]}
+            onPress={() => {
+              navigation.navigate("Signup" as never, null as never);
+            }}
+          >
+            Signup
+          </Text>
+        </TouchableOpacity>
+        <Text>|</Text>
+        <TouchableOpacity>
+          <Text style={[styles.link_btn, styles.forgot_button]}>
+            Forgot Password?
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+    </SafeAreaView>
+  );
+}
+
 const styles = StyleSheet.create({
   main_container:{
     backgroundColor: "#128892",
-    height: Dimensions.get('window').height
+    height: Dimensions.get('window').height,
   },
   container: {
     flex: 1,
     backgroundColor: "#128892",
     alignItems: "center",
     justifyContent: "center",
+    fontFamily:"Abel_400Regular"
   },
 
   logo_container: {
@@ -71,6 +142,7 @@ const styles = StyleSheet.create({
     color: "white",
     borderBottomWidth: 1,
     borderBottomColor: "black",
+    fontFamily:"Abel_400Regular"
   },
 
   btn_container: {
@@ -87,12 +159,14 @@ const styles = StyleSheet.create({
 
   signup_button: {
     marginRight: 8,
+    fontFamily:"Abel_400Regular"
   },
 
   forgot_button: {
     height: 30,
     marginBottom: 30,
     marginLeft: 8,
+    fontFamily:"Abel_400Regular"
   },
 
   loginBtn: {
@@ -104,72 +178,7 @@ const styles = StyleSheet.create({
     marginTop: 35,
     backgroundColor: "white",
   },
+  loginBtnText: {
+    fontFamily:"Abel_400Regular"
+  }
 });
-
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [hidePassword, setPasswordHideFlag] = useState(true);
-  const navigation = useNavigation();
-
-  return (
-    <SafeAreaView style={styles.main_container}>
-      <AppHeader includeLogin={false} />
-    
-    <View style={styles.container}>
-      <View style={styles.logo_container}>
-        <Image style={styles.logo} source={require("../../assets/logo1.png")} />
-      </View>
-      <StatusBar style="auto" />
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon name="user-circle-o" style={[styles.icon, styles.userIcon]}></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Username."
-          placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
-        />
-      </View>
-
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon name="lock" style={styles.icon}></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#003f5c"
-          secureTextEntry={hidePassword}
-          onChangeText={(password) => setPassword(password)}
-        />
-        <Icon name={hidePassword ? "eye" : "eye-slash"} onPress={() => setPasswordHideFlag(!hidePassword)}></Icon>
-      </View>
-
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text>LOGIN</Text>
-      </TouchableOpacity>
-
-      <View style={styles.btn_container}>
-        <TouchableOpacity>
-          <Text
-            style={[styles.link_btn, styles.signup_button]}
-            onPress={() => {
-              navigation.navigate("Signup" as never, null as never);
-            }}
-          >
-            Signup
-          </Text>
-        </TouchableOpacity>
-        <Text>|</Text>
-        <TouchableOpacity>
-          <Text style={[styles.link_btn, styles.forgot_button]}>
-            Forgot Password?
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-    </SafeAreaView>
-  );
-}
