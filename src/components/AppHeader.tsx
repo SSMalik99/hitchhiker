@@ -88,7 +88,7 @@ const AppHeader = ({ includeLogin }) => {
 
         <Pressable
           onPress={() => {
-            navigation.navigate("Signup");
+            navigation.navigate("Sign up");
           }}
         >
           <Text style={styles.header_link}>Sign Up</Text>

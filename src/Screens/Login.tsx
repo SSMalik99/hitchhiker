@@ -148,7 +148,7 @@ export default function Login() {
       </View>
 
       <TouchableOpacity style={styles.loginBtn}>
-        <Text>LOGIN</Text>
+        <Text>Login</Text>
       </TouchableOpacity>
 
       <View style={styles.btn_container}>
@@ -159,7 +159,7 @@ export default function Login() {
               navigation.navigate("Signup" as never, null as never);
             }}
           >
-            Signup
+            Sign up
           </Text>
         </TouchableOpacity>
         <Text>|</Text>

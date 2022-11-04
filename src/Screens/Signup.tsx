@@ -134,7 +134,7 @@ export default function Signup() {
         </View>
         <TextInput
           style={styles.TextInput}
-          placeholder="Username."
+          placeholder="Username"
           placeholderTextColor="#003f5c"
         />
       </View>
@@ -145,7 +145,7 @@ export default function Signup() {
         </View>
         <TextInput
           style={styles.TextInput}
-          placeholder="Email."
+          placeholder="Email"
           placeholderTextColor="#003f5c"
           onChangeText={(email) => setEmail(email)}
         />
@@ -157,7 +157,7 @@ export default function Signup() {
         </View>
         <TextInput
           style={styles.TextInput}
-          placeholder="Phone."
+          placeholder="Phone"
           placeholderTextColor="#003f5c"
         />
       </View>
@@ -168,7 +168,7 @@ export default function Signup() {
         </View>
         <TextInput
           style={styles.TextInput}
-          placeholder="Password."
+          placeholder="Password"
           placeholderTextColor="#003f5c"
           secureTextEntry={hidePassword}
           onChangeText={(password) => setPassword(password)}
@@ -185,7 +185,7 @@ export default function Signup() {
         </View>
         <TextInput
           style={styles.TextInput}
-          placeholder="Confirm Password."
+          placeholder="Confirm Password"
           placeholderTextColor="#003f5c"
           secureTextEntry={hideConfirmPassword}
           onChangeText={(confirmPassword) =>
@@ -199,11 +199,11 @@ export default function Signup() {
       </View>
 
       <TouchableOpacity style={styles.loginBtn}>
-        <Text>Signup</Text>
+        <Text>Sign up</Text>
       </TouchableOpacity>
 
       <View style={styles.btn_container}>
-        <Text style={styles.text}>Already have a account ?</Text>
+        <Text style={styles.text}>Already have an account?</Text>
         <TouchableOpacity>
           <Text
             style={[styles.link_btn, styles.signup_button]}

@@ -35,7 +35,7 @@ export default function App() {
                 },
             }
         } />
-        <Drawer.Screen name='Signup' component={Signup} options={
+        <Drawer.Screen name='Sign up' component={Signup} options={
           {
             drawerItemStyle: {
               display: "none",

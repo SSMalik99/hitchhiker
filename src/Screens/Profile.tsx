@@ -31,7 +31,7 @@ export default function Profile(){
                     <View style={styles.ride_external_row1}>
                         <Text  style={styles.ride_text2}>About:</Text>
                     </View>
-                    <Text  style={styles.ride_text3}>Right somethig about your self.....</Text>
+                    <Text  style={styles.ride_text3}>Write somethig about yourself.....</Text>
                 </View>
 
 
