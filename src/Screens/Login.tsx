@@ -15,76 +15,6 @@ import Icon from "@expo/vector-icons/FontAwesome";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppHeader from "../components/AppHeader";
 
-
-
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [hidePassword, setPasswordHideFlag] = useState(true);
-  const navigation = useNavigation();
-
-  return (
-    <SafeAreaView style={styles.main_container}>
-      <AppHeader includeLogin={false} />
-    
-    <View style={styles.container}>
-      <View style={styles.logo_container}>
-        <Image style={styles.logo} source={require("../../assets/logo1.png")} />
-      </View>
-      <StatusBar style="auto" />
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon name="user-circle-o" style={[styles.icon, styles.userIcon]}></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Username."
-          placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
-        />
-      </View>
-
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon name="lock" style={styles.icon}></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#003f5c"
-          secureTextEntry={hidePassword}
-          onChangeText={(password) => setPassword(password)}
-        />
-        <Icon name={hidePassword ? "eye" : "eye-slash"} onPress={() => setPasswordHideFlag(!hidePassword)}></Icon>
-      </View>
-
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginBtnText}>LOGIN</Text>
-      </TouchableOpacity>
-
-      <View style={styles.btn_container}>
-        <TouchableOpacity>
-          <Text
-            style={[styles.link_btn, styles.signup_button]}
-            onPress={() => {
-              navigation.navigate("Signup" as never, null as never);
-            }}
-          >
-            Signup
-          </Text>
-        </TouchableOpacity>
-        <Text>|</Text>
-        <TouchableOpacity>
-          <Text style={[styles.link_btn, styles.forgot_button]}>
-            Forgot Password?
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-    </SafeAreaView>
-  );
-}
-
 const styles = StyleSheet.create({
   main_container:{
     backgroundColor: "#128892",
@@ -182,7 +112,6 @@ const styles = StyleSheet.create({
     fontFamily:"Abel_400Regular"
   }
 });
-<<<<<<< HEAD
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -251,5 +180,4 @@ export default function Login() {
     </SafeAreaView>
   );
 }
-=======
->>>>>>> 24bf574744ffb6a644a92d3d435e8455b4b73863
+

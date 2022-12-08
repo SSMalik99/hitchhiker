@@ -207,13 +207,8 @@ export default function Signup() {
         ></Icon>
       </View>
 
-<<<<<<< HEAD
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text>Sign up</Text>
-=======
       <TouchableOpacity style={styles.signup_button}>
-        <Text style={styles.signup_button_text}>Signup</Text>
->>>>>>> 24bf574744ffb6a644a92d3d435e8455b4b73863
+        <Text style={styles.signup_button_text}>Sign Up</Text>
       </TouchableOpacity>
 
       <View style={styles.btn_container}>
