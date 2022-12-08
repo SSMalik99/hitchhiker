@@ -163,7 +163,7 @@ export default function Login() {
           <Text
             style={[styles.link_btn, styles.signup_button]}
             onPress={() => {
-              navigation.navigate("Signup" as never, null as never);
+              navigation.navigate("Sign up" as never);
             }}
           >
             Sign up
