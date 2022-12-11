@@ -14,6 +14,7 @@ import Icon from "@expo/vector-icons/FontAwesome";
 import AppHeader from "../components/AppHeader";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+
 const styles = StyleSheet.create({
   main_container:{
     backgroundColor: "#128892",
@@ -117,14 +118,39 @@ const styles = StyleSheet.create({
   },
 });
 
+
 export default function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [hidePassword, setPasswordHideFlag] = useState(true);
-  const [hideConfirmPassword, setConfirmPasswordHideFlag] = useState(true);
+  const [username, setUsername] = useState<string>("");
+  const [fullName, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>();
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [hidePassword, setPasswordHideFlag] = useState<boolean>(true);
+  const [hideConfirmPassword, setConfirmPasswordHideFlag] = useState<boolean>(true);
 
   const navigation = useNavigation();
+  const onSignup = () => {
+    if(username && email && password && confirmPassword) {
+      if (password !== confirmPassword) {
+        alert('Password and ConfirmPassword field should match');
+        return;
+      }
+      navigation.navigate("Login" as never, 
+      {
+
+        fullName: fullName,
+        username: username,
+        email: email,
+        phone: phone,
+        password: password
+      
+       
+      }as never);
+    } else {
+      alert('Please fill up all the required fields')
+    }
+  }
 
   return (
     <SafeAreaView style={styles.main_container}>
@@ -143,8 +169,23 @@ export default function Signup() {
         </View>
         <TextInput
           style={styles.TextInput}
+          placeholder="Name"
+          placeholderTextColor="#003f5c"
+          onChangeText={(fullName) => setName(fullName)}
+        />
+      </View>
+      <View style={styles.inputView}>
+        <View style={styles.iconContainer}>
+          <Icon
+            name="user-circle-o"
+            style={[styles.icon, styles.userIcon]}
+          ></Icon>
+        </View>
+        <TextInput
+          style={styles.TextInput}
           placeholder="Username"
           placeholderTextColor="#003f5c"
+          onChangeText={(username) => setUsername(username)}
         />
       </View>
 
@@ -166,8 +207,9 @@ export default function Signup() {
         </View>
         <TextInput
           style={styles.TextInput}
-          placeholder="Phone"
+          keyboardType="numeric"
           placeholderTextColor="#003f5c"
+          onChangeText={(phone) => setPhone(phone)}
         />
       </View>
 
@@ -208,10 +250,11 @@ export default function Signup() {
       </View>
 
       <TouchableOpacity style={styles.signup_button} onPress={()=>{
-        navigation.reset({
-            index:0,
-            routes:[{name:"MainTab"}]
-        })
+        onSignup()
+        // navigation.reset({
+        //     index:0,
+        //     routes:[{name:"MainTab"}]
+        // })
       }}>
         <Text style={styles.signup_button_text}>Sign Up</Text>
       </TouchableOpacity>

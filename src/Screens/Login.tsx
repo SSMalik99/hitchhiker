@@ -10,7 +10,7 @@ import {
   Dimensions,
 } from "react-native";
 
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import Icon from "@expo/vector-icons/FontAwesome";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppHeader from "../components/AppHeader";
@@ -113,11 +113,41 @@ const styles = StyleSheet.create({
   }
 });
 
+export interface userData {
+  fullName: string,
+  username: string,
+  email: string,
+  phone: string,
+  password: string
+}
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hidePassword, setPasswordHideFlag] = useState(true);
   const navigation = useNavigation();
+
+
+  const route: any = useRoute();
+  console.log("info", route.params, route);
+  
+  const onLogin = () => {
+    if(!email && !password) {
+      alert('Please enter username and password to login')
+      return
+    }
+    if ((email === route?.params?.email || email === route?.params?.username)&& password === route?.params?.password) {
+      navigation.navigate("MainTab" as never, 
+      {
+        fullName: route?.params?.fullName,
+        username: route?.params?.username,
+        email: route?.params?.email,
+        phone: route?.params?.phone     
+      }as never);
+    } else {
+      alert('The username/email or password you entered did not match our records')
+    }
+  }
 
   return (
     <SafeAreaView style={styles.main_container}>
@@ -134,7 +164,7 @@ export default function Login() {
         </View>
         <TextInput
           style={styles.TextInput}
-          placeholder="Username."
+          placeholder="Username or Email."
           placeholderTextColor="#003f5c"
           onChangeText={(email) => setEmail(email)}
         />
@@ -154,7 +184,9 @@ export default function Login() {
         <Icon name={hidePassword ? "eye" : "eye-slash"} onPress={() => setPasswordHideFlag(!hidePassword)}></Icon>
       </View>
 
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity style={styles.loginBtn} onPress={() => {
+          onLogin()
+        }}>
         <Text>Login</Text>
       </TouchableOpacity>
 
@@ -163,7 +195,7 @@ export default function Login() {
           <Text
             style={[styles.link_btn, styles.signup_button]}
             onPress={() => {
-              navigation.navigate("Sign up" as never);
+              navigation.navigate("Signup" as never);
             }}
           >
             Sign up

@@ -30,7 +30,7 @@ export default function App() {
         } />
         
         <MainStack.Screen name="Login" component={Login} options={{}} />
-        <MainStack.Screen name='signup' component={Signup} options={{}} />
+        <MainStack.Screen name='Signup' component={Signup} options={{}} />
         <MainStack.Screen name='MainTab' component={MainTab} />
       </MainStack.Navigator>
       </NavigationContainer>
