@@ -1,4 +1,12 @@
-import { Button, StyleSheet, Text, View, Image, Pressable, Dimensions } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  Dimensions,
+} from "react-native";
 import { useFonts, Abel_400Regular } from "@expo-google-fonts/abel";
 
 // import { AntDesign } from '@expo/vector-icons';
@@ -8,130 +16,134 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { Entypo } from "@expo/vector-icons";
 
-import MapView from 'react-native-maps';
+import MapView from "react-native-maps";
 
-export default function Search() {
+export default function Search({ userData }) {
   const navigation = useNavigation();
-  useFonts({
-    Abel_400Regular,
-  });
-
+  //   useFonts({
+  //     Abel_400Regular,
+  //   });
+  
+  console.log(userData);
   return (
     <SafeAreaView style={styles.main_container}>
-        <ScrollView>
+      <ScrollView>
         {/* <AppHeader includeLogin={true} /> */}
 
         {/* main view of searching screen */}
 
         <View style={styles.wrapper}>
-            
-            <View testID="location_container">
-            <View
-                style={styles.search_container}
-            >
-                <Text>
+          <View testID="location_container">
+            <View style={styles.search_container}>
+              <Text>
                 <Entypo name="location-pin" size={30} color="black" />
-                </Text>
-                <TextInput
+              </Text>
+              <TextInput
                 style={styles.search_input}
                 placeholder="Search Start Location"
-                />
+              />
+            </View>
+
+            <View style={styles.search_container}>
+              <Text>
+                <Entypo name="location" size={30} color="black" />
+              </Text>
+              <TextInput
+                style={styles.search_input}
+                placeholder="End Locatioin"
+              />
             </View>
 
             <View
-                style={styles.search_container}
+              style={{
+                marginTop: 20,
+              }}
             >
-                <Text>
-                <Entypo name="location" size={30} color="black" />
-                </Text>
-                <TextInput
-                style={styles.search_input}
-                placeholder="End Locatioin"
-                />
+              <MapView style={styles.map} />
             </View>
 
-            <View style={{
-                marginTop:20
-            }}>
-                <MapView style={styles.map} />
-            </View>
+            <ScrollView
+              style={{
+                backgroundColor: "#128892",
+                marginTop: 10,
+                borderRadius: 30,
+                padding: 8,
+              }}
+            >
+              <View>
+                <View
+                  style={{
+                    padding: 2,
+                  }}
+                >
+                  <Text style={styles.ride_text}>User Name : John</Text>
 
-            <ScrollView style={{
-                backgroundColor:"#128892",
-                marginTop:10,
-                borderRadius:30,
-                padding:8
-            }}>
-                <View>
-                    <View style={{
-                        padding:2
-                        
-                    }}>
-                        <Text style={styles.ride_text}>User Name : John</Text>
-                        
-                        <View style={styles.ride_internal_row}>
-                            <Text style={styles.ride_text}>Ride:</Text>
-                            <Text style={styles.ride_text}>Scarborough to Mississauga</Text>
-                        </View>
+                  <View style={styles.ride_internal_row}>
+                    <Text style={styles.ride_text}>Ride:</Text>
+                    <Text style={styles.ride_text}>
+                      Scarborough to Mississauga
+                    </Text>
+                  </View>
 
-                        <View style={styles.ride_internal_row}>
-                            <Text style={styles.ride_text}>Distance:</Text>
-                            <Text style={styles.ride_text}>66.5 km via Ontario 407</Text>
-                        </View>
+                  <View style={styles.ride_internal_row}>
+                    <Text style={styles.ride_text}>Distance:</Text>
+                    <Text style={styles.ride_text}>
+                      66.5 km via Ontario 407
+                    </Text>
+                  </View>
 
-                        <View style={styles.ride_internal_row}>
-                            <View>
-                                <Text style={styles.ride_text}>Date:</Text>
-                                <Text style={styles.ride_text}>DD/MM//YYYY</Text>
-                            </View>
-                            <View>
-                                <Text style={styles.ride_text}>Time:</Text>
-                                <Text style={styles.ride_text}>7:00 Amm</Text>
-                            </View>
-                        </View>
+                  <View style={styles.ride_internal_row}>
+                    <View>
+                      <Text style={styles.ride_text}>Date:</Text>
+                      <Text style={styles.ride_text}>DD/MM//YYYY</Text>
                     </View>
-
-
-                    <View style={{
-                        padding:2,
-                        marginTop:10,
-                        borderTopWidth:2,
-                        borderTopColor:"white"
-                        
-                    }}>
-                        <Text style={styles.ride_text}>User Name : John Junior</Text>
-                       
-                        <View style={styles.ride_internal_row}>
-                            <Text style={styles.ride_text}>Ride:</Text>
-                            <Text style={styles.ride_text}>Scarborough to Mississauga</Text>
-                        </View>
-
-
-                        <View style={styles.ride_internal_row}>
-                            <Text style={styles.ride_text}>Distance:</Text>
-                            <Text style={styles.ride_text}>66.5 km via Ontario 407</Text>
-                        </View>
-
-                        <View style={styles.ride_internal_row}>
-                            <View>
-                                <Text style={styles.ride_text}>Date:</Text>
-                                <Text style={styles.ride_text}>DD/MM//YYYY</Text>
-                            </View>
-                            <View>
-                                <Text style={styles.ride_text}>Time:</Text>
-                                <Text style={styles.ride_text}>8:00 Amm</Text>
-                            </View>
-                        </View>
+                    <View>
+                      <Text style={styles.ride_text}>Time:</Text>
+                      <Text style={styles.ride_text}>7:00 Amm</Text>
                     </View>
+                  </View>
                 </View>
+
+                <View
+                  style={{
+                    padding: 2,
+                    marginTop: 10,
+                    borderTopWidth: 2,
+                    borderTopColor: "white",
+                  }}
+                >
+                  <Text style={styles.ride_text}>User Name : John Junior</Text>
+
+                  <View style={styles.ride_internal_row}>
+                    <Text style={styles.ride_text}>Ride:</Text>
+                    <Text style={styles.ride_text}>
+                      Scarborough to Mississauga
+                    </Text>
+                  </View>
+
+                  <View style={styles.ride_internal_row}>
+                    <Text style={styles.ride_text}>Distance:</Text>
+                    <Text style={styles.ride_text}>
+                      66.5 km via Ontario 407
+                    </Text>
+                  </View>
+
+                  <View style={styles.ride_internal_row}>
+                    <View>
+                      <Text style={styles.ride_text}>Date:</Text>
+                      <Text style={styles.ride_text}>DD/MM//YYYY</Text>
+                    </View>
+                    <View>
+                      <Text style={styles.ride_text}>Time:</Text>
+                      <Text style={styles.ride_text}>8:00 Amm</Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
             </ScrollView>
-
-            </View>
-
-            
-            
+          </View>
         </View>
-        </ScrollView>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -139,7 +151,7 @@ export default function Search() {
 const styles = StyleSheet.create({
   main_container: {
     backgroundColor: "#128892",
-    height: Dimensions.get('window').height
+    height: Dimensions.get("window").height,
   },
   wrapper: {
     justifyContent: "center",
@@ -152,12 +164,12 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginTop: 30,
   },
-  search_container:{
+  search_container: {
     flexDirection: "row",
-              justifyContent: "space-around",
-              alignContent: "center",
-              alignItems: "center",
-              marginTop: 10,
+    justifyContent: "space-around",
+    alignContent: "center",
+    alignItems: "center",
+    marginTop: 10,
   },
   search_input: {
     marginTop: 10,
@@ -169,18 +181,17 @@ const styles = StyleSheet.create({
     borderBottomColor: "#000000",
     fontFamily: "Abel_400Regular",
   },
-  map:{
-    width: Dimensions.get('window').width,
+  map: {
+    width: Dimensions.get("window").width,
     height: 400,
-    
   },
-  ride_text:{
-    fontSize:20,
-    color:"#ffffff",
-    fontFamily:"Abel_400Regular"
+  ride_text: {
+    fontSize: 20,
+    color: "#ffffff",
+    fontFamily: "Abel_400Regular",
   },
-  ride_internal_row:{
-        flexDirection:"row",
-        justifyContent:"space-around",
-    }
+  ride_internal_row: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
 });

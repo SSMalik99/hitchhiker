@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from "@expo/vector-icons/FontAwesome";
 import AppHeader from "../components/AppHeader";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView } from "react-native-gesture-handler";
 
 
 const styles = StyleSheet.create({
@@ -155,6 +156,7 @@ export default function Signup() {
   return (
     <SafeAreaView style={styles.main_container}>
       {/* <AppHeader includeLogin={false} /> */}
+      <ScrollView>
     <View style={styles.container}>
       <View style={styles.logo_container}>
         <Image style={styles.logo} source={require("../../assets/logo1.png")} />
@@ -277,6 +279,7 @@ export default function Signup() {
 
 
     </View>
+    </ScrollView>
     </SafeAreaView>
   );
 }
