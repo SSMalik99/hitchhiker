@@ -121,7 +121,7 @@ export default function Login() {
 
   return (
     <SafeAreaView style={styles.main_container}>
-      <AppHeader includeLogin={false} />
+      {/* <AppHeader includeLogin={false} /> */}
     
     <View style={styles.container}>
       <View style={styles.logo_container}>

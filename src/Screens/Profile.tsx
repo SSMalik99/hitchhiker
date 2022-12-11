@@ -19,7 +19,7 @@ export default function Profile(){
         return (
             <SafeAreaView style={styles.main_container}>
                 <ScrollView>
-                <AppHeader includeLogin={false} />
+                {/* <AppHeader includeLogin={false} /> */}
 
                 <View  style={styles.main_wrapper}>
                 <View style={styles.ride_external_row_icon}>

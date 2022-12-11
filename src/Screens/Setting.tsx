@@ -20,7 +20,7 @@ const Setting = () => {
         return (
             <SafeAreaView style={styles.main_container}>
             <ScrollView>
-            <AppHeader includeLogin={false} />
+            {/* <AppHeader includeLogin={false} /> */}
             <View style={styles.wrapper}>
               
               <View style={styles.ride_external_row}>
@@ -125,5 +125,6 @@ const styles = StyleSheet.create({
         marginStart: 60,
     },
 })
+
 
 export default Setting

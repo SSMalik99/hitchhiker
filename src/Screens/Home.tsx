@@ -21,7 +21,7 @@ export default function Home() {
                 </View>
                 <Pressable 
                     onPress={()=>{
-                        navigation.navigate('Search')
+                        navigation.navigate('signup')
                     }}
                     style={styles.home_btn}
                 >

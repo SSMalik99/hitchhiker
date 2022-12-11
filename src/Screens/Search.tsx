@@ -19,7 +19,7 @@ export default function Search() {
   return (
     <SafeAreaView style={styles.main_container}>
         <ScrollView>
-        <AppHeader includeLogin={true} />
+        {/* <AppHeader includeLogin={true} /> */}
 
         {/* main view of searching screen */}
 

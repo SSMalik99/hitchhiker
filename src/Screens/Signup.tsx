@@ -128,7 +128,7 @@ export default function Signup() {
 
   return (
     <SafeAreaView style={styles.main_container}>
-      <AppHeader includeLogin={false} />
+      {/* <AppHeader includeLogin={false} /> */}
     <View style={styles.container}>
       <View style={styles.logo_container}>
         <Image style={styles.logo} source={require("../../assets/logo1.png")} />
@@ -207,11 +207,18 @@ export default function Signup() {
         ></Icon>
       </View>
 
-      <TouchableOpacity style={styles.signup_button}>
+      <TouchableOpacity style={styles.signup_button} onPress={()=>{
+        navigation.reset({
+            index:0,
+            routes:[{name:"MainTab"}]
+        })
+      }}>
         <Text style={styles.signup_button_text}>Sign Up</Text>
       </TouchableOpacity>
 
-      <View style={styles.btn_container}>
+
+
+      {/* <View style={styles.btn_container}>
         <Text style={styles.text}>Already have an account?</Text>
         <TouchableOpacity>
           <Text
@@ -223,7 +230,9 @@ export default function Signup() {
             Login
           </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
+
+
     </View>
     </SafeAreaView>
   );

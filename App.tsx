@@ -1,49 +1,39 @@
 import 'react-native-gesture-handler';
-import { StyleSheet, Text, View } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-import { useFonts, Abel_400Regular } from '@expo-google-fonts/abel';
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from './src/Screens/Home';
-import Search from './src/Screens/Search';
-import Profile from './src/Screens/Profile';
-import Setting from './src/Screens/Setting';
 import Login from './src/Screens/Login';
 import Signup from './src/Screens/Signup';
+import Search from './src/Screens/Search';
+import { loadAsync } from 'expo-font';
+import { NavigationContainer } from '@react-navigation/native';
+import MainTab from './src/Screens/MainTab';
 
 
-const Drawer = createDrawerNavigator()
+// const Drawer = createDrawerNavigator()
+
+const MainStack = createNativeStackNavigator()
 
 export default function App() {
-  const [loaded, error] = useFonts({
-    Abel_400Regular,
-  });
+
+  // loadAsync("Abel_400Regular").then((font)=> console.log(font))
+
   return (
     
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home" screenOptions={
-        {headerShown: false}
-      }>
-        <Drawer.Screen name="Home" component={Home}/>
-        <Drawer.Screen name="Search" component={Search}  />
-        <Drawer.Screen name="Profile" component={Profile} />
-        <Drawer.Screen name='Setting & Privacy' component={Setting} />
-        <Drawer.Screen name="Login" component={Login} options={{
-                drawerItemStyle: {
-                  display: "none",
-                },
-            }
-        } />
-        <Drawer.Screen name='Sign up' component={Signup} options={
+    <MainStack.Navigator initialRouteName='Home'>
+
+        <MainStack.Screen name="Home" component={Home} options={
           {
-            drawerItemStyle: {
-              display: "none",
-            },
+            
           }
         } />
-      </Drawer.Navigator>
-    </NavigationContainer>
+        
+        <MainStack.Screen name="Login" component={Login} options={{}} />
+        <MainStack.Screen name='signup' component={Signup} options={{}} />
+        <MainStack.Screen name='MainTab' component={MainTab} />
+      </MainStack.Navigator>
+      </NavigationContainer>
     
   );
 
