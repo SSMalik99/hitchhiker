@@ -97,7 +97,12 @@ const Setting = ({ userData }) => {
               <Text style={styles.ride_text1}>user help , query etc.</Text>
             </View>
           </View>
-          <View style={styles.ride_external_row}>
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginBottom: 20,
+            marginStart: 20
+          }}>
             <TouchableOpacity
             style={{
               width:"100%",
