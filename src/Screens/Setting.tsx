@@ -7,6 +7,7 @@ import {
   Pressable,
   Dimensions,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { useFonts, Abel_400Regular } from "@expo-google-fonts/abel";
 
@@ -25,7 +26,7 @@ const Setting = () => {
     Abel_400Regular,
   });
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.main_container}>
@@ -90,16 +91,21 @@ const Setting = () => {
               <Text style={styles.ride_text1}>user help , query etc.</Text>
             </View>
           </View>
-          <View style={styles.ride_external_row}>
+          <View style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginBottom: 20,
+            marginStart: 20,
+          }}>
             <TouchableOpacity
-            style={{
-              width:"100%",
-              padding:20,
-              borderRadius: 10,
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#128892",
-            }}
+              style={{
+                width: "100%",
+                padding: 20,
+                borderRadius: 10,
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#128892",
+              }}
               onPress={() => {
                 return Alert.alert(
                   "Are your sure?",
@@ -109,7 +115,14 @@ const Setting = () => {
                     {
                       text: "Yes",
                       onPress: () => {
-                        navigation.navigate("Home" as never)
+                        navigation.reset({
+                          index:0,
+                          routes:[
+                            {
+                              name:"Login",
+                            }
+                          ]
+                        })
                       },
                     },
                     // The "No" button
@@ -121,11 +134,15 @@ const Setting = () => {
                 );
               }}
             >
-              <Text style={{
-                color:"white"
-              }}>Logout</Text>
+              <Text
+                style={{
+                  color: "white",
+                }}
+              >
+                Logout
+              </Text>
             </TouchableOpacity>
-            </View>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
