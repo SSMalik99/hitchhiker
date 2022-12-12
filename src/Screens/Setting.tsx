@@ -90,26 +90,41 @@ const Setting = () => {
               <Text style={styles.ride_text1}>user help , query etc.</Text>
             </View>
           </View>
-
-          <View style={{
-            flexDirection: "row",
-            justifyContent: "space-around",
-            marginBottom: 20,
-            marginStart: 20
-          }}>
-            <Icon
-              name="sign-out"
-              style={[styles.icon, styles.userIcon, styles.iconContainer]}
-            ></Icon>
-            <View>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("Login" as never);
-                }}
-              >
-                <Text style={styles.ride_text}>Logout</Text>
-                {/* <Text style={styles.ride_text1}></Text> */}
-              </TouchableOpacity>
+          <View style={styles.ride_external_row}>
+            <TouchableOpacity
+            style={{
+              width:"100%",
+              padding:20,
+              borderRadius: 10,
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#128892",
+            }}
+              onPress={() => {
+                return Alert.alert(
+                  "Are your sure?",
+                  "Are you sure you want to logout?",
+                  [
+                    // The "Yes" button
+                    {
+                      text: "Yes",
+                      onPress: () => {
+                        navigation.navigate("Home" as never)
+                      },
+                    },
+                    // The "No" button
+                    // Does nothing but dismiss the dialog when tapped
+                    {
+                      text: "No",
+                    },
+                  ]
+                );
+              }}
+            >
+              <Text style={{
+                color:"white"
+              }}>Logout</Text>
+            </TouchableOpacity>
             </View>
         </View>
       </ScrollView>
