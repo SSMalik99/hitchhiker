@@ -16,11 +16,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native-gesture-handler";
 import { loadAsync, useFonts } from "expo-font";
 
-
 const styles = StyleSheet.create({
-  main_container:{
+  main_container: {
     backgroundColor: "#128892",
-    height: Dimensions.get('window').height
+    // height: Dimensions.get("window").height,
   },
   container: {
     flex: 1,
@@ -34,7 +33,8 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 100,
-    marginBottom: 40  },
+    marginBottom: 40,
+  },
 
   logo: {
     height: 150,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     color: "white",
     borderBottomWidth: 1,
     borderBottomColor: "black",
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   },
 
   btn_container: {
@@ -87,18 +87,17 @@ const styles = StyleSheet.create({
   },
 
   signup_button: {
-
     width: "60%",
     height: 50,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "white",
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   },
 
   signup_button_text: {
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   },
 
   forgot_button: {
@@ -109,21 +108,20 @@ const styles = StyleSheet.create({
 
   text: {
     color: "white",
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   },
 
   login_button: {
     marginRight: 8,
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   },
 });
 
-
 export default function Signup() {
   // loadAsync("Abel_400Regular").then((val) => {
-    // useFonts({
-    //   Abel_400Regular
-    // });
+  // useFonts({
+  //   Abel_400Regular
+  // });
   // })
   const [username, setUsername] = useState<string>("");
   const [fullName, setName] = useState<string>("");
@@ -132,159 +130,164 @@ export default function Signup() {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [hidePassword, setPasswordHideFlag] = useState<boolean>(true);
-  const [hideConfirmPassword, setConfirmPasswordHideFlag] = useState<boolean>(true);
+  const [hideConfirmPassword, setConfirmPasswordHideFlag] =
+    useState<boolean>(true);
 
   const navigation = useNavigation();
   const onSignup = () => {
-    if(username && email && password && confirmPassword) {
+    if (username && email && password && confirmPassword) {
       if (password !== confirmPassword) {
-        alert('Password and ConfirmPassword field should match');
+        alert("Password and ConfirmPassword field should match");
         return;
       }
-      navigation.navigate("Login" as never, 
-      {
-
-        fullName: fullName,
-        username: username,
-        email: email,
-        phone: phone,
-        password: password
-      
-       
-      }as never);
+      navigation.navigate(
+        "Login" as never,
+        {
+          fullName: fullName,
+          username: username,
+          email: email,
+          phone: phone,
+          password: password,
+        } as never
+      );
     } else {
-      alert('Please fill up all the required fields')
+      alert("Please fill up all the required fields");
     }
-  }
+  };
 
   return (
     <SafeAreaView style={styles.main_container}>
       {/* <AppHeader includeLogin={false} /> */}
       <ScrollView>
-    <View style={styles.container}>
-      <View style={styles.logo_container}>
-        <Image style={styles.logo} source={require("../../assets/logo1.png")} />
-      </View>
-      <StatusBar style="auto" />
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon
-            name="user-circle-o"
-            style={[styles.icon, styles.userIcon]}
-          ></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Name"
-          placeholderTextColor="#003f5c"
-          onChangeText={(fullName) => setName(fullName)}
-        />
-      </View>
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon
-            name="user-circle-o"
-            style={[styles.icon, styles.userIcon]}
-          ></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Username"
-          placeholderTextColor="#003f5c"
-          onChangeText={(username) => setUsername(username)}
-        />
-      </View>
+        <View style={styles.container}>
+          <View style={styles.logo_container}>
+            <Image
+              style={styles.logo}
+              source={require("../../assets/logo1.png")}
+            />
+          </View>
+          <StatusBar style="auto" />
+          <View style={styles.inputView}>
+            <View style={styles.iconContainer}>
+              <Icon
+                name="user-circle-o"
+                style={[styles.icon, styles.userIcon]}
+              ></Icon>
+            </View>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Name"
+              placeholderTextColor="#003f5c"
+              onChangeText={(fullName) => setName(fullName)}
+            />
+          </View>
+          <View style={styles.inputView}>
+            <View style={styles.iconContainer}>
+              <Icon
+                name="user-circle-o"
+                style={[styles.icon, styles.userIcon]}
+              ></Icon>
+            </View>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Username"
+              placeholderTextColor="#003f5c"
+              onChangeText={(username) => setUsername(username)}
+            />
+          </View>
 
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon name="envelope" style={[styles.icon, styles.userIcon]}></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Email"
-          placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
-        />
-      </View>
+          <View style={styles.inputView}>
+            <View style={styles.iconContainer}>
+              <Icon
+                name="envelope"
+                style={[styles.icon, styles.userIcon]}
+              ></Icon>
+            </View>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Email"
+              placeholderTextColor="#003f5c"
+              onChangeText={(email) => setEmail(email)}
+            />
+          </View>
 
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon name="phone" style={[styles.icon, styles.userIcon]}></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          keyboardType="numeric"
-          placeholder="Phone Number"
-          placeholderTextColor="#003f5c"
-          onChangeText={(phone) => setPhone(phone)}
-        />
-      </View>
+          <View style={styles.inputView}>
+            <View style={styles.iconContainer}>
+              <Icon name="phone" style={[styles.icon, styles.userIcon]}></Icon>
+            </View>
+            <TextInput
+              style={styles.TextInput}
+              keyboardType="numeric"
+              placeholder="Phone Number"
+              placeholderTextColor="#003f5c"
+              onChangeText={(phone) => setPhone(phone)}
+            />
+          </View>
 
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon name="lock" style={[styles.icon]}></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password"
-          placeholderTextColor="#003f5c"
-          secureTextEntry={hidePassword}
-          onChangeText={(password) => setPassword(password)}
-        />
-        <Icon
-          name={hidePassword ? "eye" : "eye-slash"}
-          onPress={() => setPasswordHideFlag(!hidePassword)}
-        ></Icon>
-      </View>
+          <View style={styles.inputView}>
+            <View style={styles.iconContainer}>
+              <Icon name="lock" style={[styles.icon]}></Icon>
+            </View>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Password"
+              placeholderTextColor="#003f5c"
+              secureTextEntry={hidePassword}
+              onChangeText={(password) => setPassword(password)}
+            />
+            <Icon
+              name={hidePassword ? "eye" : "eye-slash"}
+              onPress={() => setPasswordHideFlag(!hidePassword)}
+            ></Icon>
+          </View>
 
-      <View style={styles.inputView}>
-        <View style={styles.iconContainer}>
-          <Icon name="lock" style={[styles.icon]}></Icon>
-        </View>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Confirm Password"
-          placeholderTextColor="#003f5c"
-          secureTextEntry={hideConfirmPassword}
-          onChangeText={(confirmPassword) =>
-            setConfirmPassword(confirmPassword)
-          }
-        />
-        <Icon
-          name={hideConfirmPassword ? "eye" : "eye-slash"}
-          onPress={() => setConfirmPasswordHideFlag(!hideConfirmPassword)}
-        ></Icon>
-      </View>
+          <View style={styles.inputView}>
+            <View style={styles.iconContainer}>
+              <Icon name="lock" style={[styles.icon]}></Icon>
+            </View>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Confirm Password"
+              placeholderTextColor="#003f5c"
+              secureTextEntry={hideConfirmPassword}
+              onChangeText={(confirmPassword) =>
+                setConfirmPassword(confirmPassword)
+              }
+            />
+            <Icon
+              name={hideConfirmPassword ? "eye" : "eye-slash"}
+              onPress={() => setConfirmPasswordHideFlag(!hideConfirmPassword)}
+            ></Icon>
+          </View>
 
-      <TouchableOpacity style={styles.signup_button} onPress={()=>{
-        onSignup()
-        // navigation.reset({
-        //     index:0,
-        //     routes:[{name:"MainTab"}]
-        // })
-      }}>
-        <Text style={styles.signup_button_text}>Sign Up</Text>
-      </TouchableOpacity>
-
-
-
-      <View style={styles.btn_container}>
-        <Text style={styles.text}>Already have an account?</Text>
-        <TouchableOpacity>
-          <Text
-            style={[styles.link_btn, styles.login_button]}
+          <TouchableOpacity
+            style={styles.signup_button}
             onPress={() => {
-              navigation.navigate("Login" as never);
+              onSignup();
+              // navigation.reset({
+              //     index:0,
+              //     routes:[{name:"MainTab"}]
+              // })
             }}
           >
-            Login
-          </Text>
-        </TouchableOpacity>
-      </View>
+            <Text style={styles.signup_button_text}>Sign Up</Text>
+          </TouchableOpacity>
 
-
-    </View>
-    </ScrollView>
+          <View style={styles.btn_container}>
+            <Text style={styles.text}>Already have an account?</Text>
+            <TouchableOpacity>
+              <Text
+                style={[styles.link_btn, styles.login_button]}
+                onPress={() => {
+                  navigation.navigate("Login" as never);
+                }}
+              >
+                Login
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }

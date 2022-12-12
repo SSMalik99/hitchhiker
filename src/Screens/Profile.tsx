@@ -18,9 +18,9 @@ export default function Profile({userData}){
     //     val
     //   });
     // })
-    useFonts({
-      Abel_400Regular
-    })
+    // useFonts({
+    //   Abel_400Regular
+    // })
 //   "email": "Aaa",
     // "fullName": "Hxdhdh",
     // "password": "123456",
@@ -86,7 +86,7 @@ export default function Profile({userData}){
 const styles = StyleSheet.create({
     main_container: {
         backgroundColor: "#128892",
-        height: Dimensions.get('window').height
+        // height: Dimensions.get('window').height
       },
       wrapper: {
         flex: 1,
@@ -126,22 +126,22 @@ const styles = StyleSheet.create({
       ride_text:{
         fontSize:20,
         color:"#000000",
-        fontFamily:"Abel_400Regular",
+        // fontFamily:"Abel_400Regular",
       },
       ride_text1:{
         fontSize:15,
         color:"#000000",
-        fontFamily:"Abel_400Regular",
+        // fontFamily:"Abel_400Regular",
       },
       ride_text2:{
         fontSize:25,
         color:"#ffffff",
-        fontFamily:"Abel_400Regular",
+        // fontFamily:"Abel_400Regular",
       },
       ride_text3:{
         fontSize:17,
         color:"#ffffff",
-        fontFamily:"Abel_400Regular",
+        // fontFamily:"Abel_400Regular",
       },
       ride_external_row_icon:{
         flexDirection:"row",

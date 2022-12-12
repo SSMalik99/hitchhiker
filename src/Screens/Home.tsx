@@ -41,7 +41,7 @@ export default function Home() {
                     </Text>
                     <AntDesign name="arrowright" style={
                         {
-                            fontFamily:'Abel_400Regular',
+                            // fontFamily:'Abel_400Regular',
                             paddingTop:2,
                             marginLeft:3
                         }

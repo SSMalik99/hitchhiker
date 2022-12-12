@@ -22,9 +22,9 @@ import Icon from "@expo/vector-icons/FontAwesome";
 import AppFooter from "../components/Footer";
 
 const Setting = () => {
-  useFonts({
-    Abel_400Regular,
-  });
+  // useFonts({
+  //   Abel_400Regular,
+  // });
 
   const navigation = useNavigation();
 
@@ -92,15 +92,17 @@ const Setting = () => {
             </View>
           </View>
           <View style={{
-            flexDirection: "row",
+            display:'flex',
+            alignItems:"center",
             justifyContent: "space-around",
-            marginBottom: 20,
-            marginStart: 20,
+            // marginBottom: 20,
+            width:"80%",
+            marginStart: 20
           }}>
             <TouchableOpacity
               style={{
                 width: "100%",
-                padding: 20,
+                padding: 10,
                 borderRadius: 10,
                 alignItems: "center",
                 justifyContent: "center",
@@ -152,7 +154,7 @@ const Setting = () => {
 const styles = StyleSheet.create({
   main_container: {
     backgroundColor: "#128892",
-    height: Dimensions.get("window").height,
+    // height: Dimensions.get("window").height,
   },
   wrapper: {
     flex: 1,
@@ -184,12 +186,12 @@ const styles = StyleSheet.create({
   ride_text: {
     fontSize: 20,
     color: "#000000",
-    fontFamily: "Abel_400Regular",
+    // fontFamily: "Abel_400Regular",
   },
   ride_text1: {
     fontSize: 15,
     color: "#000000",
-    fontFamily: "Abel_400Regular",
+    // fontFamily: "Abel_400Regular",
   },
   ride_external_row: {
     flexDirection: "row",

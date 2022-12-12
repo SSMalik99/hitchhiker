@@ -29,9 +29,15 @@ export default function App() {
           }
         } />
         
-        <MainStack.Screen name="Login" component={Login} options={{}} />
-        <MainStack.Screen name='Signup' component={Signup} options={{}} />
-        <MainStack.Screen name='MainTab' component={MainTab} />
+        <MainStack.Screen name="Login" component={Login} options={{
+          title:"Login"
+        }} />
+        <MainStack.Screen name='Signup' component={Signup} options={{
+          title:"Sign Up"
+        }} />
+        <MainStack.Screen name='MainTab' component={MainTab} options={{
+          title:"Search Your Ride"
+        }} />
       </MainStack.Navigator>
       </NavigationContainer>
     

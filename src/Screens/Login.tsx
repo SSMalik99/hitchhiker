@@ -15,6 +15,7 @@ import Icon from "@expo/vector-icons/FontAwesome";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppHeader from "../components/AppHeader";
 import { loadAsync, useFonts } from "expo-font";
+import Users from "../Mock/Users";
 
 const styles = StyleSheet.create({
   main_container:{
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#128892",
     alignItems: "center",
     justifyContent: "center",
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   },
 
   logo_container: {
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     color: "white",
     borderBottomWidth: 1,
     borderBottomColor: "black",
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   },
 
   btn_container: {
@@ -90,14 +91,14 @@ const styles = StyleSheet.create({
 
   signup_button: {
     marginRight: 8,
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   },
 
   forgot_button: {
     height: 30,
     marginBottom: 30,
     marginLeft: 8,
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   },
 
   loginBtn: {
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   loginBtnText: {
-    fontFamily:"Abel_400Regular"
+    // fontFamily:"Abel_400Regular"
   }
 });
 
@@ -129,24 +130,48 @@ export default function Login() {
 
 
   const route: any = useRoute();
+
+  const checkMockedUser = (email: string, password: string) => {
+    return Users.find(user => user.email === email && user.password == password)
+    
+  }
   
   const onLogin = () => {
     if(!email && !password) {
       alert('Please enter username and password to login')
       return
     }
-    if ((email === route?.params?.email || email === route?.params?.username)&& password === route?.params?.password) {
+
+    let mockedUser = checkMockedUser(email, password)
+
+    if (
+      (
+        (email === route?.params?.email || 
+          email === route?.params?.username
+          )&& 
+        password === route?.params?.password 
+        && mockedUser == undefined
+      ) || mockedUser != undefined) {
+
+      let userData = {}
+
+      if (mockedUser != undefined) {
+        userData = mockedUser
+
+      }else {
+        userData = {
+          fullName: route?.params?.fullName,
+          username: route?.params?.username,
+          email: route?.params?.email,
+          phone: route?.params?.phone 
+        }
+      }
       navigation.reset({
         index:0,
         routes:[
           {
             name:"MainTab",
-            params:{
-              fullName: route?.params?.fullName,
-              username: route?.params?.username,
-              email: route?.params?.email,
-              phone: route?.params?.phone 
-            }
+            params:userData
           }
         ]
       })

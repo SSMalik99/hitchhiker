@@ -35,7 +35,7 @@ export default function MainTab() {
       <Tab.Screen
         name="Search"
         options={{
-          title: "Search",
+          title: "Search Your Ride",
           tabBarIcon: ({ color }) => (
             <FontAwesome5 name="search" size={24} color={color} />
           ),

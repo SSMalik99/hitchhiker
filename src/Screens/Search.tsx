@@ -25,12 +25,11 @@ export default function Search({ userData }) {
   //   useFonts({
   //     val
   //   });
+  // // })
+  // useFonts({
+  //   Abel_400Regular
   // })
-  useFonts({
-    Abel_400Regular
-  })
   
-  console.log(userData);
   return (
     <SafeAreaView style={styles.main_container}>
       <ScrollView>
@@ -157,7 +156,7 @@ export default function Search({ userData }) {
 const styles = StyleSheet.create({
   main_container: {
     backgroundColor: "#128892",
-    height: Dimensions.get("window").height,
+    // height: Dimensions.get("window").height,
   },
   wrapper: {
     justifyContent: "center",
@@ -185,7 +184,7 @@ const styles = StyleSheet.create({
     overflow: "scroll",
     fontSize: 25,
     borderBottomColor: "#000000",
-    fontFamily: "Abel_400Regular",
+    // fontFamily: "Abel_400Regular",
   },
   map: {
     width: Dimensions.get("window").width,
@@ -194,7 +193,7 @@ const styles = StyleSheet.create({
   ride_text: {
     fontSize: 20,
     color: "#ffffff",
-    fontFamily: "Abel_400Regular",
+    // fontFamily: "Abel_400Regular",
   },
   ride_internal_row: {
     flexDirection: "row",
