@@ -6,7 +6,7 @@ import {
   Image,
   Pressable,
   Dimensions,
-  Alert,
+  TouchableOpacity,
 } from "react-native";
 import { useFonts, Abel_400Regular } from "@expo-google-fonts/abel";
 
@@ -19,18 +19,13 @@ import { Entypo } from "@expo/vector-icons";
 import React from "react";
 import Icon from "@expo/vector-icons/FontAwesome";
 import AppFooter from "../components/Footer";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { loadAsync } from "expo-font";
 
-const Setting = ({ userData }) => {
-  let navigation = useNavigation()
-
+const Setting = () => {
   useFonts({
-    Abel_400Regular
+    Abel_400Regular,
   });
-  // loadAsync("Abel_400Regular").then((val) => {
-    
-  // })
+
+  const navigation = useNavigation()
 
   return (
     <SafeAreaView style={styles.main_container}>
@@ -44,9 +39,7 @@ const Setting = ({ userData }) => {
             ></Icon>
             <View>
               <Text style={styles.ride_text}>User Info</Text>
-              <Text style={styles.ride_text1}>
-                {userData.fullName}, {userData.email} etc.
-              </Text>
+              <Text style={styles.ride_text1}>name, email etc.</Text>
             </View>
           </View>
 
@@ -97,42 +90,23 @@ const Setting = ({ userData }) => {
               <Text style={styles.ride_text1}>user help , query etc.</Text>
             </View>
           </View>
+
           <View style={styles.ride_external_row}>
-            <TouchableOpacity
-            style={{
-              width:"100%",
-              padding:20,
-              borderRadius: 10,
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#128892",
-            }}
-              onPress={() => {
-                return Alert.alert(
-                  "Are your sure?",
-                  "Are you sure you want to logout?",
-                  [
-                    // The "Yes" button
-                    {
-                      text: "Yes",
-                      onPress: () => {
-                        navigation.navigate("Home" as never)
-                      },
-                    },
-                    // The "No" button
-                    // Does nothing but dismiss the dialog when tapped
-                    {
-                      text: "No",
-                    },
-                  ]
-                );
-              }}
-            >
-              <Text style={{
-                color:"white"
-              }}>Logout</Text>
-            </TouchableOpacity>
+            <Icon
+              name="sign-out"
+              style={[styles.icon, styles.userIcon, styles.iconContainer]}
+            ></Icon>
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Login" as never);
+                }}
+              >
+                <Text style={styles.ride_text}>Logout</Text>
+                {/* <Text style={styles.ride_text1}></Text> */}
+              </TouchableOpacity>
             </View>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

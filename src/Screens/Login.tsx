@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 35,
     backgroundColor: "white",
   },
   loginBtnText: {
@@ -130,12 +129,6 @@ export default function Login() {
 
 
   const route: any = useRoute();
-  // loadAsync("Abel_400Regular").then((val) => {
-  //   useFonts({
-  //     val
-  //   });
-  // })
-  
   
   const onLogin = () => {
     if(!email && !password) {

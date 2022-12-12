@@ -62,7 +62,7 @@ export default function MainTab() {
         name={`Setting & Privacy`}
         
         options={{
-          title: "Profile",
+          title: "Setting",
           tabBarIcon: ({ color }) => (
             <Ionicons name="settings" size={24} color={color} />
           ),

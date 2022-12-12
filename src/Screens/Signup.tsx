@@ -34,8 +34,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 100,
-    marginBottom: 40,
-  },
+    marginBottom: 40  },
 
   logo: {
     height: 150,
@@ -94,7 +93,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 35,
     backgroundColor: "white",
     fontFamily:"Abel_400Regular"
   },
@@ -216,6 +214,7 @@ export default function Signup() {
         <TextInput
           style={styles.TextInput}
           keyboardType="numeric"
+          placeholder="Phone Number"
           placeholderTextColor="#003f5c"
           onChangeText={(phone) => setPhone(phone)}
         />

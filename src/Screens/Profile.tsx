@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginTop: 70,
         paddingStart:15,
-        paddingTop:30,
+        paddingTop:30
       },
       main_wrapper: {
         flex: 1,
