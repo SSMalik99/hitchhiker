@@ -17,12 +17,18 @@ import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { Entypo } from "@expo/vector-icons";
 
 import MapView from "react-native-maps";
+import { loadAsync } from "expo-font";
 
 export default function Search({ userData }) {
   const navigation = useNavigation();
+  // loadAsync("Abel_400Regular").then((val) => {
   //   useFonts({
-  //     Abel_400Regular,
+  //     val
   //   });
+  // })
+  useFonts({
+    Abel_400Regular
+  })
   
   console.log(userData);
   return (

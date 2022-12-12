@@ -4,9 +4,19 @@ import { useNavigation } from '@react-navigation/native';
 
 import { AntDesign } from '@expo/vector-icons';
 import AppFooter from '../components/Footer';
+import { loadAsync, useFonts } from 'expo-font';
 
 
 export default function Home() {
+    
+    // loadAsync("Abel_400Regular").then((val) => {
+    //     useFonts({
+    //       val
+    //     });
+    // //   })
+    // useFonts({
+    //     Abel_400Regular
+    //   })
 
     const navigation = useNavigation();
    
@@ -83,6 +93,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: '#ffffff',
-        fontFamily:'Abel_400Regular',
+        // fontFamily:'Abel_400Regular',
       },
 })

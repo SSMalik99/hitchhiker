@@ -8,14 +8,24 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import React from 'react';
 import Icon from "@expo/vector-icons/FontAwesome";
+import { loadAsync } from 'expo-font';
 
 
-export default function Profile(){
+export default function Profile({userData}){
     const navigation = useNavigation();
+    // loadAsync("Abel_400Regular").then((val) => {
+    //   useFonts({
+    //     val
+    //   });
+    // })
     useFonts({
-        Abel_400Regular,
-      });
-
+      Abel_400Regular
+    })
+//   "email": "Aaa",
+    // "fullName": "Hxdhdh",
+    // "password": "123456",
+    // "phone": "6494959",
+    // "username": "Xbbxb",
         return (
             <SafeAreaView style={styles.main_container}>
                 <ScrollView>
@@ -26,7 +36,7 @@ export default function Profile(){
                         <Icon name="user-circle-o" style={[styles.icon2]}></Icon>
                     </View>
                     <View style={styles.ride_external_row1}>
-                        <Text  style={styles.ride_text2}>User Name </Text>
+                        <Text  style={styles.ride_text2}>{userData.username} </Text>
                     </View>
                     <View style={styles.ride_external_row1}>
                         <Text  style={styles.ride_text2}>About:</Text>
@@ -44,19 +54,19 @@ export default function Profile(){
                     <View style={styles.ride_external_row}>
                         <Icon name="phone" style={[styles.userIcon]}></Icon>
                         <View>
-                            <Text style={styles.ride_text}>+1 000 000 0000</Text>
+                            <Text style={styles.ride_text}>{userData.phone}</Text>
                         </View>
                     </View>
                     <View style={styles.ride_external_row}>
                         <Icon name="whatsapp" style={[styles.userIcon]}></Icon>
                         <View>
-                            <Text style={styles.ride_text}>+1 000 000 0000</Text>
+                            <Text style={styles.ride_text}>{userData.phone}</Text>
                         </View>
                     </View>
                     <View style={styles.ride_external_row}>
                         <Icon name="envelope" style={[styles.userIcon]}></Icon>
                         <View>
-                            <Text style={styles.ride_text}>username@gmail.com</Text>
+                            <Text style={styles.ride_text}>{userData.email}</Text>
                         </View>
                     </View>
                     <View style={styles.ride_external_row}>

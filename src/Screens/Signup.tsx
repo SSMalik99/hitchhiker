@@ -14,6 +14,7 @@ import Icon from "@expo/vector-icons/FontAwesome";
 import AppHeader from "../components/AppHeader";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native-gesture-handler";
+import { loadAsync, useFonts } from "expo-font";
 
 
 const styles = StyleSheet.create({
@@ -121,6 +122,11 @@ const styles = StyleSheet.create({
 
 
 export default function Signup() {
+  // loadAsync("Abel_400Regular").then((val) => {
+    // useFonts({
+    //   Abel_400Regular
+    // });
+  // })
   const [username, setUsername] = useState<string>("");
   const [fullName, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -263,7 +269,7 @@ export default function Signup() {
 
 
 
-      {/* <View style={styles.btn_container}>
+      <View style={styles.btn_container}>
         <Text style={styles.text}>Already have an account?</Text>
         <TouchableOpacity>
           <Text
@@ -275,7 +281,7 @@ export default function Signup() {
             Login
           </Text>
         </TouchableOpacity>
-      </View> */}
+      </View>
 
 
     </View>

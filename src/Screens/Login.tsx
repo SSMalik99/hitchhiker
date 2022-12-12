@@ -14,6 +14,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import Icon from "@expo/vector-icons/FontAwesome";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppHeader from "../components/AppHeader";
+import { loadAsync, useFonts } from "expo-font";
 
 const styles = StyleSheet.create({
   main_container:{
@@ -129,7 +130,12 @@ export default function Login() {
 
 
   const route: any = useRoute();
-  console.log("info", route.params, route);
+  // loadAsync("Abel_400Regular").then((val) => {
+  //   useFonts({
+  //     val
+  //   });
+  // })
+  
   
   const onLogin = () => {
     if(!email && !password) {
@@ -137,13 +143,24 @@ export default function Login() {
       return
     }
     if ((email === route?.params?.email || email === route?.params?.username)&& password === route?.params?.password) {
-      navigation.navigate("MainTab" as never, 
-      {
-        fullName: route?.params?.fullName,
-        username: route?.params?.username,
-        email: route?.params?.email,
-        phone: route?.params?.phone     
-      }as never);
+      navigation.reset({
+        index:0,
+        routes:[
+          {
+            name:"MainTab",
+            params:{
+              fullName: route?.params?.fullName,
+              username: route?.params?.username,
+              email: route?.params?.email,
+              phone: route?.params?.phone 
+            }
+          }
+        ]
+      })
+      // navigation.navigate("MainTab" as never, 
+      // {
+            
+      // }as never);
     } else {
       alert('The username/email or password you entered did not match our records')
     }

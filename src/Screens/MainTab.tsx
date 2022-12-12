@@ -13,7 +13,7 @@ import Search from "./Search";
 import Profile from "./Profile";
 import Setting from "./Setting";
 
-import { loadAsync } from "expo-font";
+import { loadAsync, useFonts } from "expo-font";
 import { RotateInUpLeft } from "react-native-reanimated";
 
 // const Drawer = createDrawerNavigator()
@@ -21,8 +21,8 @@ import { RotateInUpLeft } from "react-native-reanimated";
 const Tab = createBottomTabNavigator();
 
 export default function MainTab() {
-  //   loadAsync("Abel_400Regular").then((font)=> console.log(font))
-
+    // loadAsync("Abel_400Regular").then((font)=> console.log(font))
+    
   const route: any = useRoute();
 
   let userData = route.params;
@@ -42,29 +42,34 @@ export default function MainTab() {
         }}
       >
         {(props) => <Search {...props} userData={userData} />}
-        {/* ({pro})<Search userData={userData} /> */}
+        
         
       </Tab.Screen>
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        
         options={{
           title: "Profile",
           tabBarIcon: ({ color }) => (
             <AntDesign name="profile" size={24} color={color} />
           ),
         }}
-      />
+      >
+        {(props) => <Profile {...props} userData={userData} />}
+      </Tab.Screen>
+
       <Tab.Screen
         name={`Setting & Privacy`}
-        component={Setting}
+        
         options={{
           title: "Profile",
           tabBarIcon: ({ color }) => (
             <Ionicons name="settings" size={24} color={color} />
           ),
         }}
-      />
+      >
+        {(props) => <Setting {...props} userData={userData} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
